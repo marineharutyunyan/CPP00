@@ -1,14 +1,15 @@
 #include "PhoneBook.hpp"
 #include <iostream>
 
-int main() {    
+int main() {
+
     PhoneBook phoneBook;
     std::string command;
 
-    std::cout << "Enter the command (ADD, SEARCH or EXIT)" << std::endl;
     while (true)
-    {
-        std::cin >> command;
+    {    
+        std::cout << "Enter the command (ADD, SEARCH or EXIT)" << std::endl;
+        std::getline(std::cin , command);
         if (std::cin.good() == false)
         {
             return 0;
@@ -16,7 +17,7 @@ int main() {
         if(command == "ADD")
         {
             phoneBook.addContact();
-        } 
+        }
         else if (command == "SEARCH")
         {
             phoneBook.searchContact();
@@ -24,11 +25,11 @@ int main() {
         else if (command == "EXIT")
         {
             std::cout << "EXIT command called" <<  std::endl;
-            break;
+            return 0;
         }
         else
         {
-            std::cout << "Wrong command, please enter the command (ADD, SEARCH or EXIT)" << std::endl;
+            std::cout << "Wrong command!" << std::endl;
         }
     }
     return 0;

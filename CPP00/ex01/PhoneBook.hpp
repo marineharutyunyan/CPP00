@@ -11,8 +11,8 @@ class PhoneBook {
         void addContact();
         void searchContact();
     private:
-        int _maxContactsNum;
         int _curIndex;
+        int _maxContacts;
         Contact _contacts[8];
 };
 
