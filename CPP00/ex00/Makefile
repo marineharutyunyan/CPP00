@@ -1,5 +1,5 @@
 NAME		 =	megaphone
-CC			 =	g++
+CC			 =	c++
 
 OBJECTFOLDER = temp
 MKDIR = mkdir

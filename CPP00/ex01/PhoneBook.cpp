@@ -5,6 +5,7 @@
 
 PhoneBook::PhoneBook() : _curIndex(0) {
     _maxContacts = 0;
+    _filledIndex = 0;
 }
 
 PhoneBook::~PhoneBook()
@@ -80,6 +81,10 @@ void PhoneBook::addContact()
         _maxContacts++;
     }
     _curIndex++;
+    if(_filledIndex < 8)
+    {
+        _filledIndex++;
+    }
 }
 
 std::string truncated(std::string str)
@@ -112,8 +117,7 @@ void PhoneBook::searchContact()
     getline(std::cin , strIndex);
     char *endPtr;
     int index = std::strtol(strIndex.c_str(), &endPtr, 10);
-    
-    if (*endPtr == '\0'  && !strIndex.empty() && index >= 0 && index < _curIndex)
+    if (*endPtr == '\0'  && !strIndex.empty() && index >= 0 && index < _filledIndex)
     {
         std::cout << "Index: " << index << std::endl;
         std::cout << "First Name: " << _contacts[index].getFirstName() << std::endl;

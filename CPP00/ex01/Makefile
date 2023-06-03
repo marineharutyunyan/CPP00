@@ -1,11 +1,11 @@
 NAME		 =	phonebook
-CC			 =	g++
+CC			 =	c++
 
 OBJECTFOLDER = temp
 MKDIR = mkdir
 SRCS		=	$(wildcard *.cpp)
 OBJS		=	$(patsubst %.cpp, $(OBJECTFOLDER)/%.o, $(SRCS))
-CFLAGS		=	-std=c++98 -Wall -Wextra #-Werror
+CFLAGS		=	-std=c++98 -Wall -Wextra -Werror
 RM			=	rm -rf
 HEADER		=	$(wildcard *.hpp)
 
