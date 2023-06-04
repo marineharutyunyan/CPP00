@@ -24,7 +24,6 @@ int main() {
         }
         else if (command == "EXIT")
         {
-            std::cout << "EXIT command called" <<  std::endl;
             return 0;
         }
         else
