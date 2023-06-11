@@ -1,39 +1,50 @@
 #include "iostream"
 #include <fstream>
 
-void replace(std::string fileName, std::string line)
-{
-    std::ofstream   repFile(fileName, std::ios::app);
-    if (!repFile)
-    {
-        std::cout << "Error creating the file." << std::endl;
+std::string findAndReplace(std::string line, const std::string s1, const std::string s2) {
+    std::string newLine;
+    size_t lineLen = line.length();
+    size_t s1Len = s1.length();
+
+    size_t start = 0;
+    size_t found = line.find(s1);
+
+    while (found < lineLen) {
+        newLine += line.substr(start, found - start);
+        newLine += s2;
+        start = found + s1Len;
+        found = line.find(s1, start);
     }
-    else 
-    {
-        repFile << line;
-        repFile.close();
-    }
+    newLine += line.substr(start);
+
+    return newLine;
 }
 
 int main (int argc, char **argv)
 {
     if (argc == 4)
     {
+        std::string outputName = std::string(argv[1]) + ".replace";
+        std::ifstream inputFile(argv[1]);
+        std::ofstream outputFile(outputName);
 
-        std::ifstream file(argv[1]);
-        if (file.is_open())
+        if (!inputFile || !outputFile) 
         {
-            std::string line;
-            while (std::getline(file, line))
-            {
-                std::cout << line << std::endl;
-            }
-            file.close();
+            std::cerr << "Failed to open files." << std::endl;
+            return 1;
         }
-        else
+        std::string line;
+        while (std::getline(inputFile, line)) 
         {
-            std::cout << "Failed to open the file" << std::endl;
+            outputFile <<  findAndReplace(line,argv[2], argv[3]) << std::endl;
         }
+        inputFile.close();
+        outputFile.close();
     }
+    else
+    {
+        std::cout << "Wrong argumet number" << std::endl;
+    }
+
     return 0;
 }
