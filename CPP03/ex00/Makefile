@@ -1,4 +1,4 @@
-NAME		 =	zombie
+NAME		 =	trap
 CC			 =	c++
 
 OBJECTFOLDER = temp
