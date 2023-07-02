@@ -1,7 +1,12 @@
-#include "iostream"
 #include "Harl.hpp"
 
-int main()
+int	main( void )
 {
-    return 0;
+	Harl harl;
+
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("WARNING");
+	harl.complain("ERROR");
+	harl.complain("Eee");
 }
