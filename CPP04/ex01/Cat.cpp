@@ -3,6 +3,7 @@
 
 Cat::Cat(): Animal("Cat"), _brain(new Brain())
 {
+    std::cout << "Cat constuctor called" << std::endl;
 }
 
 Cat::~Cat()
@@ -12,9 +13,7 @@ Cat::~Cat()
 }
 
 Cat::Cat(const Cat &cat): Animal(cat)
-{
-   
-}
+{}
 
 Cat& Cat::operator=(const Cat &cat)
 {

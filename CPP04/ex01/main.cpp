@@ -5,21 +5,14 @@
 int main()
 {
     const Animal* a = new Dog();
-    const Animal* b = new Dog();
     const Animal* c = new Dog();
-    const Animal* d = new Cat();
     const Animal* e = new Cat();
-    const Animal* animals[5] = {a, b, c, d, e};   
+    const Animal* animals[3] = {a, c, e};   
 
-    for (int i =0; i< 5; i++)
+    for (int i =0; i< 3; i++)
     {
         delete (animals[i]);
     }
-    // delete a;
-    // delete b;
-    // delete c;
-    // delete d;
-    // delete e;
     // delete[] animals;
     return 0;
 }
