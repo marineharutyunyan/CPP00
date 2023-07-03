@@ -1,39 +1,37 @@
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-
-
-Animal::~Animal()
+WrongAnimal::WrongAnimal()
 {
-   std::cout << "Animal destuctor called" << std::endl;
+    std::cout << "WrongAnimal constructor called" << std::endl;
 }
 
-Animal::Animal()
+WrongAnimal::~WrongAnimal()
 {
-    std::cout << "Animal constructor called" << std::endl;
+   std::cout << "WrongAnimal destuctor called" << std::endl;
 }
       
-Animal::Animal(const std::string &type)
+WrongAnimal::WrongAnimal(const std::string &type)
 {
     _type = type;
 }
 
-Animal::Animal(const Animal &obj)
+WrongAnimal::WrongAnimal(const WrongAnimal &obj)
 {
     _type = obj._type;
 }
 
- Animal& Animal::operator=(const Animal &obj)
+ WrongAnimal& WrongAnimal::operator=(const WrongAnimal &obj)
 {
     _type = obj._type;
     return *this;
 }
 
-std::string Animal::getType() const
+std::string WrongAnimal::getType() const
 {
     return _type;
 }
 
-void Animal::makeSound() const
+void WrongAnimal::makeSound() const
 {
-    std::cout << "Animal's sound" << std::endl; 
+    std::cout << "WrongAnimal's sound" << std::endl; 
 }
