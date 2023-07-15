@@ -6,6 +6,5 @@ int main ()
     clapTrap.attack("B");
     clapTrap.beRepaired(5);
     clapTrap.takeDamage(5);
-    clapTrap.printState();
     return 0;
 }

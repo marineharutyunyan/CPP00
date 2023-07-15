@@ -13,7 +13,7 @@ class Fixed
         int getRawBits( void ) const;
     private:
         int _intNum;
-        static const int _fractionalNum = 8;
+        static const int _fractionalBits = 8;
 };      
 
 #endif

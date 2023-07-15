@@ -7,6 +7,5 @@ int main ()
     scavTrap.beRepaired(5);
     scavTrap.takeDamage(5);
     scavTrap.guardGate();
-    scavTrap.printState();
     return 0;
 }

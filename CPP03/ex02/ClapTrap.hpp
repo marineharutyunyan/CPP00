@@ -10,7 +10,6 @@ class ClapTrap
         void operator=(const ClapTrap &obj);
         ~ClapTrap();
         void attack(const std::string& target);
-        void printState();
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
     protected:

@@ -7,6 +7,5 @@ int main ()
     fragTrap.beRepaired(5);
     fragTrap.takeDamage(5);
     fragTrap.highFivesGuys();
-    fragTrap.printState();
     return 0;
 }

@@ -1,7 +1,8 @@
 #include "ClapTrap.hpp"
+
 ClapTrap::ClapTrap()
 {
-      std::cout << _name << " Constructor called" << std::endl;
+    std::cout << _name << " Constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -57,9 +58,4 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
     _hitPoints += amount; 
     std::cout << "ClapTrap " <<  _name  <<  " repaired " << amount << " hit point " << std::endl;;
-}
-
-void ClapTrap::printState()
-{
-    std::cout << "ClapTrap " <<  _name  <<  std::endl << "_attackDamage = " << _attackDamage << " _hitPoints =  " << _hitPoints << " _energyPoints = " << _energyPoints << std::endl;;
 }

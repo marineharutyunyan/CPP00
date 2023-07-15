@@ -1,6 +1,6 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
-# include <iostream>
+#include <iostream>
 
 class Fixed
 {
@@ -9,8 +9,7 @@ class Fixed
         Fixed(const int num);
         Fixed(const float num);
         Fixed(const Fixed &obj);
-        void operator=(const Fixed &obj);
-        const Fixed operator<<(const Fixed &obj);
+        Fixed& operator=(const Fixed &obj);
         ~Fixed();
         void setRawBits( int const raw );
         int getRawBits( void ) const;
@@ -18,7 +17,8 @@ class Fixed
         int toInt( void ) const;
     private:
         int _intNum;
-        static const int _fractionalNum = 8;
+        static const int _fractionalBits = 8;
 };      
 
+std::ostream& operator<<(std::ostream& out, const Fixed& obj);
 #endif
