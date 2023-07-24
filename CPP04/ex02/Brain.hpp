@@ -9,6 +9,7 @@ public:
     Brain(const Brain &brain);
     Brain& operator=(const Brain &brain);
     ~Brain();
+private:
     std::string _ideas[100]; 
 };
 

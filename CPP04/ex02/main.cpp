@@ -4,7 +4,6 @@
 
 int main()
 {
-    // const Animal animal;
     const Animal* a = new Dog();
     const Animal* c = new Dog();
     const Animal* e = new Cat();
@@ -14,5 +13,7 @@ int main()
     {
         delete (animals[i]);
     }
+    
+    //delete[] animals;
     return 0;
 }

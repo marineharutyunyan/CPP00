@@ -22,9 +22,11 @@ int main()
 
     const WrongAnimal* meta1 = new WrongAnimal();
     const WrongAnimal* wrongCat = new WrongCat();
+    const WrongCat* wrongCat2 = new WrongCat();
     std::cout << wrongCat->getType() << " " << std::endl;
     wrongCat->makeSound();
     meta1->makeSound();
+    wrongCat2->makeSound();
 
 return 0;
 }

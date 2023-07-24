@@ -13,6 +13,7 @@ int main()
     {
         delete (animals[i]);
     }
-    // delete[] animals;
+    
+    //delete[] animals;
     return 0;
 }

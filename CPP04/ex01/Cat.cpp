@@ -13,11 +13,14 @@ Cat::~Cat()
 }
 
 Cat::Cat(const Cat &cat): Animal(cat)
-{}
+{
+    _brain = new Brain(*cat._brain);
+}
 
 Cat& Cat::operator=(const Cat &cat)
 {
     Animal::operator=(cat);
+    *_brain = *cat._brain;
     return *this;
 }
 
