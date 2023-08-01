@@ -9,25 +9,26 @@ class Bureaucrat
         Bureaucrat();
         Bureaucrat(const int grade, const std::string &name);
         Bureaucrat(const Bureaucrat &obj);
-        virtual ~Bureaucrat();
+        ~Bureaucrat();
         Bureaucrat& operator=(const Bureaucrat &obj);
         std::string getName() const;
         int getGrade() const;
+        void setGrade(const int grade);
+
         void increment();
         void decrement();
-    private:
-        const std::string _name;
-        int _grade;
         class GradeError : public std::exception
         {
             public:
-                GradeError(const std::string &message);
-                virtual ~GradeError() throw();
-                virtual const char* what() const throw();
-                virtual void setMessage(const std::string &message);
+                const char * what() const throw();
+                void setErrorTex(const std::string &errorTex);
             private:
-                std::string m_message;
+                std::string _errorText;
         };
+    private:
+        const std::string _name;
+        int _grade;
+        
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj);

@@ -11,13 +11,14 @@ Bureaucrat::Bureaucrat()
 }
       
 Bureaucrat::Bureaucrat(const int grade, const std::string &name) : _name(name)
-{
-    GradeTooHighException 
+{ 
     _grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &obj) :_name(obj._name), _grade(obj._grade)
-{}
+{
+
+}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &obj)
 {
@@ -32,28 +33,62 @@ std::string Bureaucrat::getName() const
 
 int Bureaucrat::getGrade() const
 {
-    return _grade;
+    return Bureaucrat::_grade;
+}
+
+void Bureaucrat::setGrade(const int grade)
+{
+    Bureaucrat::_grade = grade;
+}
+
+const char * Bureaucrat::GradeError::what() const throw()
+{
+    return  _errorText.c_str();
+}
+
+void Bureaucrat::GradeError::setErrorTex(const std::string &errorTex)
+{
+    Bureaucrat::GradeError::_errorText = errorTex;
 }
 
 void Bureaucrat::increment()
 {
-    _grade--;
+    Bureaucrat::_grade--;
+    try {
+        if (Bureaucrat::_grade < 1)
+        {
+            Bureaucrat::GradeError err;
+            err.setErrorTex("Grade is too high exception");
+            throw(Bureaucrat::GradeError());
+        }
+        if(Bureaucrat::_grade > 150)
+        {
+            Bureaucrat::GradeError err;
+            err.setErrorTex("Grade is too high exception");
+            throw(err);
+        }
+    } catch(Bureaucrat::GradeError e) {
+        e.what();
+    }
 }
 
 void Bureaucrat::decrement()
-{   if (check())
-    {
-        _grade++;
+{   
+    Bureaucrat::_grade++;
+    try {
+        if (Bureaucrat::_grade < 1)
+        {
+            Bureaucrat::GradeError err;
+            err.setErrorTex("Grade is too high exception");
+            throw err;
+        }
+        if(Bureaucrat::_grade > 150)
+        {
+            Bureaucrat::GradeError err;
+            err.setErrorTex("Grade is too high exception");
+            throw err;
+        }
+    } catch(Bureaucrat::GradeError e) {
+        e.what();
     }
-    throw
-
-}
-
-bool Bureaucrat::isTooHigh()
-{
-    if (_grade < 1)
-    {
-        return false;
-    }
-    return true;
 }
