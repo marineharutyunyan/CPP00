@@ -3,18 +3,6 @@
 #include <iostream>
 #include <exception>
 
-// class A
-// {
-//     public:
-//         virtual ~A() throw() {}
-// };
-
-// class B
-// {
-//     public:
-//         // virtual ~B() {}
-// };
-
 class Bureaucrat
 {
     public:
@@ -41,7 +29,6 @@ class Bureaucrat
     private:
         const std::string _name;
         int _grade;
-        
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj);
