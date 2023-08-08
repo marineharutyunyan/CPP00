@@ -18,6 +18,8 @@ class Form
     private:
         const std::string _name;
         bool _sign;
+        const int gradeForSign;
+        const int gradeForExec;
         
 };
 

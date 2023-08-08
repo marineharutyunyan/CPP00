@@ -1,6 +1,6 @@
 #include "Form.hpp"
 
-Form::Form()
+Form::Form() : _sign(false)
 {
     std::cout << "Form constructor called" << std::endl;
 }

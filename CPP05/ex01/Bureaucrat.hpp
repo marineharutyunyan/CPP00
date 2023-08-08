@@ -3,6 +3,18 @@
 #include <iostream>
 #include <exception>
 
+// class A
+// {
+//     public:
+//         virtual ~A() throw() {}
+// };
+
+// class B
+// {
+//     public:
+//         // virtual ~B() {}
+// };
+
 class Bureaucrat
 {
     public:
@@ -22,6 +34,7 @@ class Bureaucrat
             public:
                 const char * what() const throw();
                 void setErrorTex(const std::string &errorTex);
+                virtual ~GradeError() throw();
             private:
                 std::string _errorText;
         };

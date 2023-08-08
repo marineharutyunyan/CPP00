@@ -11,7 +11,19 @@ Bureaucrat::~Bureaucrat()
 }
 
 Bureaucrat::Bureaucrat(const int grade, const std::string &name) : _name(name)
-{ 
+{
+    if (grade < 1)
+    {
+        Bureaucrat::GradeError err;
+        err.setErrorTex("Grade is too high exception");
+        throw (err);
+    }
+    if(grade > 150)
+    {
+        Bureaucrat::GradeError err;
+        err.setErrorTex("Grade is too low exception");
+        throw (err);
+    }
     _grade = grade;
 }
 
@@ -33,68 +45,49 @@ std::string Bureaucrat::getName() const
 
 int Bureaucrat::getGrade() const
 {
-    return Bureaucrat::_grade;
+    return _grade;
 }
 
 void Bureaucrat::setGrade(const int grade)
 {
-    Bureaucrat::_grade = grade;
+   _grade = grade;
 }
 
 const char * Bureaucrat::GradeError::what() const throw()
 {
-    return  _errorText.c_str();
+    return  Bureaucrat::GradeError::_errorText.c_str();
 }
 
 void Bureaucrat::GradeError::setErrorTex(const std::string &errorTex)
 {
-    Bureaucrat::GradeError::_errorText = errorTex;
+    _errorText = errorTex;
 }
+
+Bureaucrat::GradeError::~GradeError() throw() {};
 
 void Bureaucrat::increment()
 {
-    Bureaucrat::_grade--;
-    try {
-        if (Bureaucrat::_grade < 1)
-        {
-            Bureaucrat::GradeError err;
-            err.setErrorTex("Grade is too high exception");
-            throw(Bureaucrat::GradeError());
-        }
-        if(Bureaucrat::_grade > 150)
-        {
-            Bureaucrat::GradeError err;
-            err.setErrorTex("Grade is too high exception");
-            throw(err);
-        }
-    } catch(Bureaucrat::GradeError e) {
-        e.what();
+    if (_grade <= 1)
+    {
+        Bureaucrat::GradeError err;
+        err.setErrorTex("Grade is too high exception");
+        throw (err);
     }
+    _grade--;
 }
 
 void Bureaucrat::decrement()
 {   
-    Bureaucrat::_grade++;
-    try {
-        if (Bureaucrat::_grade < 1)
-        {
-            Bureaucrat::GradeError err;
-            err.setErrorTex("Grade is too high exception");
-            throw err;
-        }
-        if(Bureaucrat::_grade > 150)
-        {
-            Bureaucrat::GradeError err;
-            err.setErrorTex("Grade is too high exception");
-            throw err;
-        }
-    } catch(Bureaucrat::GradeError e) {
-        e.what();
+    if(_grade >= 150)
+    {
+        Bureaucrat::GradeError err;
+        err.setErrorTex("Grade is too low exception");
+        throw (err);
     }
+    _grade++;
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj) {
-	std::cout << obj.getName();
-	std::cout << obj.getGrade();
+	std::cout << obj.getName() << ", bureaucrat grade " << obj.getGrade();
 	return (out);
 };
