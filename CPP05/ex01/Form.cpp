@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form() : _name("Default Name"), _sign(false), _gradeSign(1), _gradeExec(1) 
 {
@@ -10,10 +11,10 @@ Form::~Form()
    std::cout << "Form destuctor called" << std::endl;
 }
 
-Form::Form(const bool sign, const std::string &name, int gradeSign, int gradeExec )
+Form::Form(const std::string &name, int gradeSign, int gradeExec )
     : _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec)
 { 
-    _sign = sign;
+    _sign = false;
     if (_gradeSign < 1 || _gradeExec < 1)
     {
         Form::GradeError err;
@@ -64,6 +65,18 @@ void Form::setSign(const bool sign)
     Form::_sign = sign;
 }
 
+void Form::beSigned(Bureaucrat &obj)
+{
+    if (obj.getGrade() <= this->getGradeSign())
+    {
+        this->_sign = true;
+    } else {
+        Form::GradeError err;
+        err.setErrorTex("Grade is too low exception");
+        throw (err);
+    }
+}
+
 const char * Form::GradeError::what() const throw()
 {
     return  Form::GradeError::_errorText.c_str();
@@ -77,9 +90,8 @@ void Form::GradeError::setErrorTex(const std::string &errorTex)
 Form::GradeError::~GradeError() throw() {};
 
 std::ostream &operator<<(std::ostream &out, const Form &obj) {
-	std::cout << obj.getName();
-	std::cout << obj.getSign();
-	std::cout << obj.getGradeSign();
-	std::cout << obj.getGradeExec();
+	std::cout << "name: " << obj.getName() << ", Signe: " 
+    << obj.getSign() << ",  GradeSign: " << obj.getGradeSign() 
+    << ",  GradeSign: " <<  obj.getGradeExec();
 	return (out);
 };

@@ -3,11 +3,13 @@
 #include <iostream>
 #include <exception>
 
+class Bureaucrat;
+
 class Form
 {
     public:
         Form();
-        Form(const bool sign, const std::string &name, int gradeSign, int gradeExec);
+        Form(const std::string &name, int gradeSign, int gradeExec);
         Form(const Form &obj);
         ~Form();
         Form& operator=(const Form &obj);
@@ -25,12 +27,12 @@ class Form
             private:
                 std::string _errorText;
         };
+    void beSigned(Bureaucrat &obj);
     private:
         const std::string _name;
         bool _sign;
         const int _gradeSign;
         const int _gradeExec;
-        
 };
 
 std::ostream &operator<<(std::ostream &out, const Form &obj);

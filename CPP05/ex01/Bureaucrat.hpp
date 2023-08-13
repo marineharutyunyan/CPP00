@@ -3,6 +3,8 @@
 #include <iostream>
 #include <exception>
 
+ class Form;
+
 class Bureaucrat
 {
     public:
@@ -26,6 +28,7 @@ class Bureaucrat
             private:
                 std::string _errorText;
         };
+        void signForm(Form &obj);
     private:
         const std::string _name;
         int _grade;
