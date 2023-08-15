@@ -10,11 +10,11 @@ int main() {
     double doubleArray[] = {0.1, 0.2, 0.3, 0.4, 0.5};
 
     std::cout << "Int array elements: ";
-    ::iter(intArray, sizeof(intArray) / sizeof(intArray[0]), displayElement<int>);
+    ::iter<int>(intArray, sizeof(intArray) / sizeof(intArray[0]), displayElement<int>);
     std::cout << std::endl;
 
     std::cout << "Double array elements: ";
-    ::iter(doubleArray, sizeof(doubleArray) / sizeof(doubleArray[0]), displayElement<double>);
+    ::iter<double>(doubleArray, sizeof(doubleArray) / sizeof(doubleArray[0]), displayElement<double>);
     std::cout << std::endl;
 
     return 0;
