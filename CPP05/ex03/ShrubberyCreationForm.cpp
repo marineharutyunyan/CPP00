@@ -18,13 +18,11 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return (*this);
 };
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
-    this->check(executor);
+void ShrubberyCreationForm::action() const {
     std::ofstream outputFile(_target + "_shrubbery.txt");
     if (outputFile.is_open() == false) {
         throw (std::runtime_error("file was not created"));
     }
-    
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 5 - i - 1; ++j) {
             outputFile << " ";
