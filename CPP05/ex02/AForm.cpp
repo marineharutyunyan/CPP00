@@ -91,6 +91,14 @@ void AForm::check(Bureaucrat const & obj) const
 
 };
 
+
+void AForm::execute(Bureaucrat const & executor) const
+{
+    this->check(executor);
+    this->action();
+};
+
+
 AForm::GradeError::GradeError( const std::string &errorTex ) {
     _errorText = errorTex;
 };

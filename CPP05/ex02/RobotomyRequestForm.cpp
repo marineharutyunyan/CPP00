@@ -17,8 +17,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
     return (*this);
 };
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
-    this->check(executor);
+void RobotomyRequestForm::action() const {
     srand(time(NULL));
     bool success = (std::rand() % 2) == 0;
 

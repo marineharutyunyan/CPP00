@@ -18,7 +18,6 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
     return (*this);
 };
 
-void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
-    this->check(executor);
+void PresidentialPardonForm::action() const {
     std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 };

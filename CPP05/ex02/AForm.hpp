@@ -32,8 +32,8 @@ class AForm
         };
     void beSigned(Bureaucrat &obj);
     void check(Bureaucrat const & bobj) const;
-    virtual void execute(Bureaucrat const & executor) const = 0;
-	// virtual void inform() const = 0;
+    void execute(Bureaucrat const & executor) const;
+	virtual void action() const = 0;
     private:
         const std::string _name;
         bool _sign;
