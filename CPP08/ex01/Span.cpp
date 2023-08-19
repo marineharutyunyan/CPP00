@@ -2,6 +2,7 @@
 
 Span::Span(unsigned int N) : _N(N)
 {
+    nums.reserve(N);
 }
 
 void Span::addNumber(int num)
@@ -45,16 +46,6 @@ int Span::longestSpan()
     distance = *max - *min;
     return (distance);
 }
-
-// template<typename T>
-// void Span::fillSpan(T begin, T end)
-// {
-//     while (begin < end)
-//     {
-//         addNumber(*begin);
-//         begin++;
-//     }
-// }
 
 Span::~Span()
 {
