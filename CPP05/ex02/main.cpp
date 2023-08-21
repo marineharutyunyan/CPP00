@@ -7,7 +7,7 @@ int main()
 {   
     try
     {
-        /*{
+        {
             Bureaucrat obj1(10, "Buro1");
             std::cout << obj1 << std::endl;
             PresidentialPardonForm fobj("fornmane");
@@ -22,7 +22,7 @@ int main()
             obj1.executeForm(fobj);
             obj1.signForm(fobj);
             obj1.executeForm(fobj);
-        }*/
+        }
         {
             Bureaucrat obj1(60, "Buro1");
             std::cout << obj1 << std::endl;

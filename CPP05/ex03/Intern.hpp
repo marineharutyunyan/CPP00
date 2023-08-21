@@ -7,6 +7,9 @@
 
 class Intern
 {
+    AForm *makeRobotomyRequestForm(const std::string &target);
+    AForm *makePresidentialPardonForm(const std::string &target);
+    AForm *makeShrubberyCreationForm(const std::string &target);
 public:
     AForm *makeForm(const std::string &name, const std::string &target);
 };

@@ -1,4 +1,4 @@
-NAME		 =	aform
+NAME		 =	intern
 CC			 =	c++
 
 OBJECTFOLDER = temp

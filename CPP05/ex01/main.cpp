@@ -5,8 +5,8 @@ int main()
 {   
     try
     {
-        Bureaucrat obj(150, "MM");
-        std::cout << obj << std::endl;
+        //Bureaucrat obj(150, "MM");
+        //std::cout << obj << std::endl;
         // obj.increment();
         //obj.decrement();
         //Bureaucrat obj1(15, "Buro1"); 
