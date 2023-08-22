@@ -79,7 +79,7 @@ void AForm::beSigned(Bureaucrat &obj)
 
 void AForm::check(Bureaucrat const & obj) const
 {
-    if (this->_sign == false)
+    if (!(this->_sign == false))
     {
        throw (GradeError("Form is not signed to be executed!"));
     }
