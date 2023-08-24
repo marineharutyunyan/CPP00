@@ -1,7 +1,5 @@
 #include "ScalarConverter.hpp"
-#include <exception>
-#include <limits>
-#include <math.h>
+
 bool isDisplayable(int value) {
     if (value >= 32 && value <= 126) {
         return true;
@@ -213,7 +211,7 @@ void castImpossibleToAnotherType(double value)
     castDouble = static_cast<double>(value);
     std::cout << "char: " << "impossible" << std::endl;
     std::cout << "int: " << "impossible" << std::endl;
-    std::cout << "float: " << castFloat << std::endl;
+    std::cout << "float: " << castFloat << "f" <<std::endl;
     std::cout << "double: " << castDouble << std::endl;
 }
 
@@ -244,6 +242,6 @@ void ScalarConverter::convert(const std::string &str)
     }
     else
     {
-        std::cout << "argument type was wrong" << std::endl;
+        std::cout << "Passed Parameter isn't convertable" << std::endl;
     }
 }
