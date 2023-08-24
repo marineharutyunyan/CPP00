@@ -48,7 +48,7 @@ bool is_double(std::string literal)
 
     else
     {
-        if(!isdigit(literal[0]))
+        if(!isdigit(literal[i]))
            return false;
         while(literal[i])
         {
@@ -74,7 +74,7 @@ bool is_float(std::string literal)
     }
     else
     {
-        if(!isdigit(literal[0]))
+        if(!isdigit(literal[i]))
             return false;
         while(literal[i])
         {
@@ -127,11 +127,11 @@ void castIntToAnotherType(double value)
     std::cout << "int: ";
     if(checkIntLimits(value))
     {
-        std::cout << "impossible" << std::endl;
+        std::cout << castInt << std::endl;
     }
     else 
     {
-        std::cout << castInt << value << std::endl;
+        std::cout << "impossible" << std::endl;
     }    
     std::cout << "float: " << castFloat << ".0f" << std::endl;
     std::cout << "double: " << castDouble << ".0" << std::endl;
@@ -217,6 +217,7 @@ void castImpossibleToAnotherType(double value)
 
 void ScalarConverter::convert(const std::string &str)
 {
+    //TODO not working 
     const char *line = str.c_str();
     double tmp = std::strtod(line, NULL);
 
