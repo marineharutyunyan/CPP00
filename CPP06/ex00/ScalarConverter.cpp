@@ -98,6 +98,24 @@ bool checkIntLimits(double number)
     return true;
 }
 
+bool checkFloatLimits(double number)
+{
+    if(!((long)number > -std::numeric_limits<float>::max() && (long)number < std::numeric_limits<float>::max()))
+    {
+        return false;
+    }
+    return true;
+}
+
+bool checkCharLimits(double number)
+{
+    if(!((long)number > std::numeric_limits<char>::min() && (long)number < std::numeric_limits<char>::max()))
+    {
+        return false;
+    }
+    return true;
+}
+
 bool isDisplayable(double number)
 {
     if (!(number >= 32 && number <= 126)) {
@@ -114,16 +132,24 @@ void castIntToAnotherType(double value)
     double castDouble;
     
     castInt = static_cast<int>(value);
-    castDouble = static_cast<double>(castInt);
+    castDouble = static_cast<double>(value);
     castChar = static_cast<char>(castInt);
-    castFloat = static_cast<float>(castInt);
+    castFloat = static_cast<float>(value);
     std::cout << "char: ";
-    if(isDisplayable(value))
+    if(checkCharLimits(value))
     {
-         std::cout << "'" << castChar << "'" << std::endl;
-    } else {
-        std::cout << "Non displayable" << std::endl;
+        if(isDisplayable(value))
+        {
+            std::cout << "'" << castChar << "'" << std::endl;
+        } else {
+            std::cout << "Non displayable" << std::endl;
+        }
     }
+    else 
+    {
+        std::cout << "impossible" << std::endl;
+    }
+    
     std::cout << "int: ";
     if(checkIntLimits(value))
     {
@@ -143,7 +169,6 @@ void castCharToAnotherType(std::string value)
     char  castChar;
     float castFloat;
     double castDouble;
-    //checkCharLimits(value); //TODO does char have limits ?
        
     castChar = static_cast<char>(value[0]);
     castInt = static_cast<int>(castChar);
@@ -152,7 +177,7 @@ void castCharToAnotherType(std::string value)
     std::cout << "char: ";
     if(isDisplayable(castChar))
     {
-         std::cout << "'" << castChar << "'" << std::endl;
+        std::cout << "'" << castChar << "'" << std::endl;
     } else {
         std::cout << "Non displayable" << std::endl;
     }
@@ -169,37 +194,54 @@ void castFloatToAnotherType(double value)
     double castDouble;
 
     castFloat = static_cast<float>(value);
-    castInt = static_cast<int>(castFloat);
+    castInt = static_cast<int>(value);
     double decimalPart = value - castInt;
-    castDouble = static_cast<double>(castFloat);
+    castDouble = static_cast<double>(value);
     castChar = static_cast<char>(castFloat);
+
     std::cout << "char: ";
-    if(isDisplayable(value))
+    if(checkCharLimits(value))
     {
-         std::cout << "'" << castChar << "'" << std::endl;
-    } 
-    else {
-        std::cout << "Non displayable" << std::endl;
+        if(isDisplayable(value))
+        {
+            std::cout << "'" << castChar << "'" << std::endl;
+        } else {
+            std::cout << "Non displayable" << std::endl;
+        }
     }
-    std::cout << "int: " << castInt << std::endl;
+    else 
+    {
+        std::cout << "impossible" << std::endl;
+    }
+    std::cout << "int: ";
+    if(checkIntLimits(value))
+    {
+        std::cout << castInt << std::endl;
+    }
+    else 
+    {
+        std::cout << "impossible" << std::endl;
+    }
+
     std::cout << "float: ";
-    if (decimalPart != 0.0) 
+    if(checkFloatLimits(value))
     {
-        std::cout << castFloat << "f" << std::endl;
-    } 
-    else
-    {
-        std::cout << castFloat << ".0f" << std::endl;
+        std::cout << castFloat;
+        if (decimalPart != 0.0) 
+            std::cout << "f" << std::endl;
+        else
+            std::cout << ".0f" << std::endl;
     }
-    std::cout << "double: ";
+    else 
+    {
+        std::cout << "impossible" << std::endl;
+    }    
+    
+    std::cout << "double: " << castDouble;
     if (decimalPart != 0.0)
-    {
-        std::cout << castDouble << std::endl;
-    } 
+        std::cout << std::endl;
     else
-    {
-        std::cout<< castDouble << ".0" << std::endl;
-    }
+        std::cout<<  ".0" << std::endl;
 }
 
 void castImpossibleToAnotherType(double value)
@@ -217,7 +259,6 @@ void castImpossibleToAnotherType(double value)
 
 void ScalarConverter::convert(const std::string &str)
 {
-    //TODO not working 
     const char *line = str.c_str();
     double tmp = std::strtod(line, NULL);
 
