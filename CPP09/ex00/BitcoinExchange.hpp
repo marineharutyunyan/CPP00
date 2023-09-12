@@ -13,7 +13,10 @@ class BitcoinExchange
         BitcoinExchange &operator=(const BitcoinExchange &obj);
         void exchange(const std::string &inputFile);
     private:
-        std::map<std::string, std::string> _map;
+        std::map<std::string, std::string, std::greater<std::string> > _map;
 };
+
+
+bool isDateValid(int month, int day, int year);
 
 #endif

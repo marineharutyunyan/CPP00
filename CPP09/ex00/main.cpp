@@ -11,7 +11,7 @@ int main (int argc, char **argv)
         }
         else
         {
-            std::cout << "error" << std::endl;
+            std::cout << "Error: could not open file." << std::endl;
         }
     }
     catch(const std::exception& e)

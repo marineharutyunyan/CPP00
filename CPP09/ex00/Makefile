@@ -5,7 +5,7 @@ OBJECTFOLDER = temp
 MKDIR = mkdir
 SRCS		=	$(wildcard *.cpp)
 OBJS		=	$(patsubst %.cpp, $(OBJECTFOLDER)/%.o, $(SRCS))
-CFLAGS		=	-std=c++98 -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS		=	#-std=c++98 -Wall -Wextra -Werror -fsanitize=address -g
 RM			=	rm -rf
 HEADER		= $(wildcard *.hpp)
 
