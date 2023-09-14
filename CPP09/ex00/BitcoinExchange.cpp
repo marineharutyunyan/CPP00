@@ -172,6 +172,7 @@ BitcoinExchange::BitcoinExchange(const std::string &dataFile) {
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj) {
 	_map = obj._map;
 };
+
 BitcoinExchange::~BitcoinExchange() {};
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &obj) {
