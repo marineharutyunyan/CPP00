@@ -12,19 +12,25 @@ private:
 public:
     PmergeMe();
     template <typename It>
-    PmergeMe(It begin, It end) 
-    : _dataVector(begin, end), _dataList(begin, end) { };
+    PmergeMe(It begin, It end) : _dataVector(begin, end), _dataList(begin, end) { };
     ~PmergeMe();
+    PmergeMe &operator=(const PmergeMe &obj);
+    PmergeMe(const PmergeMe &obj);
     void sort();
-    void sort_2();
     void fillContainer(int N);
 };
 
 
 bool legal_int(char *str);
 double	get_time();
+
 template <typename T>
-void printContainer(T data);
+void printContainer(T data)
+{
+    for (typename T::iterator it = data.begin(); it != data.end(); it++)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+}
 
 template <typename T>
 void swap(T &a, T &b) {
@@ -59,15 +65,6 @@ void insertionSort(It begin, It end)
     }
     
 }
-
-template <typename T>
-void printContainer(T data)
-{
-    for (typename T::iterator it = data.begin(); it != data.end(); it++)
-        std::cout << *it << " ";
-    std::cout << std::endl;
-}
-
 
 template <typename Cont>
 Cont  merge(typename Cont::iterator Lbegin, typename Cont::iterator Rbegin, typename Cont::iterator Lend, typename Cont::iterator Rend)

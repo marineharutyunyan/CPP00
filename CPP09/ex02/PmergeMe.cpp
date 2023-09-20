@@ -8,26 +8,17 @@ PmergeMe::PmergeMe()
 
 PmergeMe::~PmergeMe()
 {
-
 }
-// void PmergeMe::sort()
-// {
-//         //data = recurciveSort<std::list<int> >(data.begin(), data.end());
-//         // clock_t end_time = clock();
-//         // Calculate the time taken in seconds
-//         std::cout << "Before:  ";
-//         printContainer<std::list<int> >(_dataList);
-//         double start_time = get_time();
-//         insertionSort(_dataList.begin(), _dataList.end());
-//         double end_time = get_time();;
-//         std::cout << "After:   ";
-//         printContainer<std::list<int> >(_dataList);
-//         std::cout << "Time to process a range of  " << _dataList.size() << " elements with std::list : " << end_time - start_time << " us" << std::endl;
-//         start_time = get_time();
-//         insertionSort(_dataVector.begin(), _dataVector.end());
-//         end_time = get_time();;
-//         std::cout << "Time to process a range of  " << _dataVector.size() << " elements with std::vector : " << end_time - start_time << " us" << std::endl;
-// }
+
+PmergeMe::PmergeMe(const PmergeMe &obj) :  _dataVector(obj._dataVector), _dataList(obj._dataList)  {};
+
+PmergeMe &PmergeMe::operator=(const PmergeMe &obj) {
+    if (this != &obj) {
+        _dataList = obj._dataList;
+        _dataVector = obj._dataVector;
+    }
+    return (*this);
+};
 
 void PmergeMe::sort()
 {
@@ -44,7 +35,6 @@ void PmergeMe::sort()
         end_time = get_time();;
         std::cout << "Time to process a range of  " << _dataVector.size() << " elements with std::vector : " << end_time - start_time << " us" << std::endl;       
 }
-
 
 void PmergeMe::fillContainer(int N) {
     std::srand(unsigned(std::time(nullptr)));
@@ -63,7 +53,7 @@ bool legal_int(char *str)
     while (str[i] != 0)
     {
         if (!std::isdigit(str[i])) {
-            return false; //TODO handle + / - case
+            return false;
         }
         i++;
     } 
@@ -77,7 +67,6 @@ bool legal_int(char *str)
 double	get_time()
 {
 	struct timeval	current_time;
-
 	gettimeofday(&current_time, NULL);
 	return (current_time.tv_sec * 1000000) + (current_time.tv_usec);
 }
